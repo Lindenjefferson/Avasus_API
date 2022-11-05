@@ -11,28 +11,14 @@ class ProfessorView(APIView):
     permission_classes = [permissions.AllowAny]
 
     @csrf_exempt
-    def get(self, request: HttpRequest):
-        # print(request.user.username)
-        return professorService.listar_todos()
-
-    @csrf_exempt
     def post(self, request: HttpRequest):
         professor = JSONParser().parse(request)
         return professorService.cadastrar(professor)
 
 
-class ProfessorDetailView(APIView):
+class PerfilProfessor(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     @csrf_exempt
-    def get(self, request: HttpRequest, prof_id: int):
-        return professorService.detalhar(prof_id)
-
-    @csrf_exempt
-    def put(self, request: HttpRequest, prof_id: int):
-        professor = JSONParser().parse(request)
-        return professorService.atualizar(prof_id, professor)
-
-    @csrf_exempt
-    def delete(self, request: HttpRequest, prof_id: int):
-        return professorService.deletar(prof_id)
+    def get(self, request: HttpRequest):
+        return professorService.detalhar(request.user.username)

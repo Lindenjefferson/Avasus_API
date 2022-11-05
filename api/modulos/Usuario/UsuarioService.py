@@ -10,6 +10,11 @@ def criar_usuario(usuario):
     return None
 
 
+def deletar_usuario(cpf):
+    usuario = User.objects.get(username=cpf)
+    usuario.delete()
+
+
 def validar_usuario(usuario):
     if not validar_cpf(usuario["cpf"]):
         return 'CPF invalido'

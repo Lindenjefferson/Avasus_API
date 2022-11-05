@@ -6,8 +6,3 @@ class EixoTematicoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Eixo_Tematico
         fields = ('id', 'nome')
-
-class EixoTematicoCadastroSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Eixo_Tematico
-        fields = ('nome')

@@ -1,29 +1,26 @@
 from rest_framework.response import Response
 from rest_framework import status
 from api.models import Professor
-from datetime import datetime
+from datetime import datetime, date
 import api.modulos.Professor.ProfessorSerializer as ProfessorSerializer
 import api.modulos.Usuario.UsuarioService as UsuarioService
 
 ID_NOT_FOUND = "Id não encontrado."
 
 
-def listar_todos():
-    professores = Professor.objects.all()
-    response = ProfessorSerializer.ProfessorSerializer(professores, many=True).data
-    return Response(response, status=status.HTTP_200_OK)
-
-
-def detalhar(id):
+def detalhar(cpf: str):
     try:
-        professor = Professor.objects.get(id=id)
+        professor = Professor.objects.get(cpf=cpf)
         response = ProfessorSerializer.ProfessorSerializer(professor).data
+        response.update(idade = calcular_idade(
+            datetime.strptime(response.get("data_nascimento"), '%Y-%m-%d').date()
+        ))
         return Response(response, status=status.HTTP_200_OK)
     except Professor.DoesNotExist:
         return Response({'message': ID_NOT_FOUND}, status=status.HTTP_400_BAD_REQUEST)
 
 
-def cadastrar(professor_data):
+def cadastrar(professor_data: dict):
     retorno_usuario = UsuarioService.criar_usuario(professor_data)
     if (retorno_usuario != None):
         return Response({'message': retorno_usuario}, status=status.HTTP_400_BAD_REQUEST)
@@ -37,28 +34,10 @@ def cadastrar(professor_data):
     return Response({'message': 'Adicionado com sucesso'}, status=status.HTTP_200_OK)
 
 
-def atualizar(id, professor_data):
-    try:
-        professor = Professor.objects.get(id=id)
-        validacao_professor = validar_prof(professor_data)
-        if (validacao_professor != None):
-            return Response({'message': validacao_professor}, status=status.HTTP_400_BAD_REQUEST)
-        professor_serializer = ProfessorSerializer.EdicaoProfessorSerializer(professor, data=professor_data)
-        if not professor_serializer.is_valid():
-            return Response({'message': 'Falha ao atualizar'}, status=status.HTTP_400_BAD_REQUEST)
-        professor_serializer.save()
-        return Response({'message': 'Atualizado com sucesso'}, status=status.HTTP_200_OK)
-    except Professor.DoesNotExist:
-        return Response({'message': ID_NOT_FOUND}, status=status.HTTP_400_BAD_REQUEST)
-
-
-def deletar(id):
-    try:
-        professor = Professor.objects.get(id=id)
-        professor.delete()
-        return Response({'message': 'Deletado com sucesso'}, status=status.HTTP_200_OK)
-    except Professor.DoesNotExist:
-        return Response({'message': ID_NOT_FOUND}, status=status.HTTP_400_BAD_REQUEST)
+def calcular_idade(data: date): 
+    hoje = date.today() 
+    idade = hoje.year - data.year - ((hoje.month, hoje.day) < (data.month, data.day)) 
+    return idade 
 
 
 def validar_prof(professor_data):
