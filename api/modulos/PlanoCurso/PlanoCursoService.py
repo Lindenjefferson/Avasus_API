@@ -46,4 +46,16 @@ def listar_todos():
     for curso in response:
         curso.update(eixo_tematico=Eixo_Tematico.objects.get(id=curso.get("eixo_tematico")).nome)
         curso.update(professor_responsavel=Professor.objects.get(id=curso.get("professor_responsavel")).nome)
-    return Response(response, status=status.HTTP_200_OK)        
+    return Response(response, status=status.HTTP_200_OK)    
+
+
+def alterar_status(curso_id: int, data: dict):
+    try:
+        curso = PLano_Curso.objects.get(id=curso_id)
+        if str(data["status"]).strip().lower() == "aprovado": curso.status = "aprovado"
+        elif str(data["status"]).strip().lower() == "recusado": curso.status = "recusado"
+        else: return Response({'message': "status não permitido"}, status=status.HTTP_400_BAD_REQUEST)
+        curso.save()
+        return Response(status=status.HTTP_200_OK)
+    except PLano_Curso.DoesNotExist:
+        return Response({'message': ID_NOT_FOUND}, status=status.HTTP_400_BAD_REQUEST)

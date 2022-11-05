@@ -14,6 +14,8 @@ def listar_por_curso(curso_id: int):
 def cadastrar(topico_data: dict, curso_id: int):
     if PLano_Curso.objects.filter(id=curso_id).exists() == False:
         return Response({'message': 'Curso não existente'}, status=status.HTTP_400_BAD_REQUEST)
+    if PLano_Curso.objects.get(id=curso_id).status != "aprovado":
+        return Response({'message': 'Curso ainda não aprovado'}, status=status.HTTP_400_BAD_REQUEST)
     if Topico_Aula.objects.filter(curso=curso_id).count() == 5:
         return Response({'message': 'Maximo de topicos de aula ja cadastrados'}, status=status.HTTP_400_BAD_REQUEST)
     topico_data.update(curso=curso_id)
