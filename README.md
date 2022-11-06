@@ -1,4 +1,7 @@
-# Avasus_API
+# Avasus
+
+### Aplicação
+* O app encontra-se na pasta API
 
 ### Banco de dados
 * Criado localmente usando MySQL
