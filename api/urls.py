@@ -5,6 +5,7 @@ from api.modulos.Autenticacao.TokenView import TokenView
 from api.modulos.EixoTematico.EixoTematicoView import EixoTematicoView
 from api.modulos.PlanoCurso.PlanoCursoView import PLanoCursoView, PLanoCursoDetalhadoView, AdminListarCursosView, AdminAlterarStatusCursosView
 from api.modulos.TopicoAula.TopicoAulaView import TopicoAulaView
+from api.modulos.Certificado.CertificadoView import GerarCertificadoView, BaixarCertificadoView, ValidarCertificadoView
 
 
 urlpatterns = [
@@ -17,5 +18,8 @@ urlpatterns = [
     path('professor/curso/<int:curso_id>', PLanoCursoDetalhadoView.as_view()),
     path('professor/curso/<int:curso_id>/topico', TopicoAulaView.as_view()),
     path('admin/curso', AdminListarCursosView.as_view()),
-    path('admin/curso/<int:curso_id>', AdminAlterarStatusCursosView.as_view())
+    path('admin/curso/<int:curso_id>', AdminAlterarStatusCursosView.as_view()),
+    path('certificado/gerar/<int:curso_id>', GerarCertificadoView.as_view()),
+    path('certificado/baixar/<int:curso_id>', BaixarCertificadoView.as_view()),
+    path('certificado/validar/<str:token>', ValidarCertificadoView.as_view())
 ]

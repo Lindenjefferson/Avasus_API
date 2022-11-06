@@ -37,6 +37,5 @@ class Certificado(models.Model):
     id = models.AutoField(primary_key=True)
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
     curso = models.ForeignKey(PLano_Curso, on_delete=models.CASCADE)
-    data = models.DateField()
+    data_criacao = models.DateField()
     codigo = models.CharField(unique=True, max_length=120)
-    assinado = models.BooleanField()
