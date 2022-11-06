@@ -1,0 +1,532 @@
+{
+	"info": {
+		"_postman_id": "59693323-932f-4a21-970e-c955095a19d3",
+		"name": "Avasus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10921093"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login normal",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"77185737028\",\r\n    \"password\": 12345\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"abc@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Professor",
+			"item": [
+				{
+					"name": "Listar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3NjgxMzI5LCJpYXQiOjE2Njc2ODEwMjksImp0aSI6ImQwODEyNjZkYzU0ODQ3YmQ5MDZlNzA4ZWM5ZjRiNGUwIiwidXNlcl9pZCI6MiwiY3BmIjoiNzcxODU3MzcwMjgifQ.xu0mrQPoz-9-CIpAWTW9_DNJx65vRg8O7UdQ6Filvjs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/professor/perfil",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"professor",
+								"perfil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"89428110000\",\r\n    \"nome\": \"professor 3\",\r\n    \"data_nascimento\": \"2022-01-01\",\r\n    \"titulacao\": \"mestrado\",\r\n    \"senha\": \"12345\",\r\n    \"senha2\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/professor",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"professor"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Curso",
+			"item": [
+				{
+					"name": "Cadastrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3Njc0NTA2LCJpYXQiOjE2Njc2NzQyMDYsImp0aSI6IjI5MzAwMjhkNWQ0NzRjMjc5MDIwNTUyODlmZGRmYzhjIiwidXNlcl9pZCI6MiwiY3BmIjoiNzcxODU3MzcwMjgifQ.W1403e4KnSjDpkAYGgSOH9FjEBe3fCvOAqO7oJRkKGY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\":\"curso de teste\",\r\n    \"objetivo_geral\":\"objetivo do curso\",\r\n    \"ementa\":\"ementa do curso\",\r\n    \"carga_horaria\":30,\r\n    \"eixo_tematico\":2,\r\n    \"avaliacao\":5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/professor/curso",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"professor",
+								"curso"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar meus cursos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3NzQ0OTk2LCJpYXQiOjE2Njc3NDQ2OTYsImp0aSI6Ijg0NjdhNzJjMzllYzQ5NmFhZTE5MjU3YmRhNWIxYTU3IiwidXNlcl9pZCI6MiwiY3BmIjoiNzcxODU3MzcwMjgifQ.-5QejhuThk5yUz07VB2pic_r4bzXHVlRwY-el-wOjoI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/professor/curso",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"professor",
+								"curso"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detalhar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3NjgxMzgzLCJpYXQiOjE2Njc2ODEwODMsImp0aSI6ImYwOWVjNTg4ODRmODRhYTZhMzAwYWEyYzJlNTFkNTNmIiwidXNlcl9pZCI6MywiY3BmIjoiODk0MjgxMTAwMDAifQ.7vKI4BKlVD6fAH17aMnpPxP60o78bjrPrl_SCVRrsJg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/professor/curso/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"professor",
+								"curso",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Topicos",
+			"item": [
+				{
+					"name": "Listar  por curso",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3NjgyNTQ2LCJpYXQiOjE2Njc2ODIyNDYsImp0aSI6IjEzNWE4MTMxNmIyOTQxNTdiMzc4YTgyZTk2MDkzOTQ1IiwidXNlcl9pZCI6MiwiY3BmIjoiNzcxODU3MzcwMjgifQ.PGFxprXti3Xk0eAj9EcyI9VIQTHjrtRrj18S__ZiMFs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/professor/curso/1/topico",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"professor",
+								"curso",
+								"1",
+								"topico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3Njg4NTMzLCJpYXQiOjE2Njc2ODgyMzMsImp0aSI6IjFlNDk1MjJjYjQzMjQ5NzY5ZjA2OGNlMzQ0YTBhZjMwIiwidXNlcl9pZCI6MywiY3BmIjoiODk0MjgxMTAwMDAifQ.1-mJAuNGmajZ9k-nZpWlSRG5ro0xP7mxai9ZiOxYuxc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\":\"titulo 1\",\r\n    \"descricao\":\"descricao 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/professor/curso/2/topico",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"professor",
+								"curso",
+								"2",
+								"topico"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Listar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3Njg4MzcyLCJpYXQiOjE2Njc2ODgwNzIsImp0aSI6IjAzM2YzOGQ1MjNiZDRkYzY5MTMwYTgxZDZiZWY4ZjM1IiwidXNlcl9pZCI6NCwiY3BmIjoiYWRtaW4ifQ.Go-aNJ2DkXy81LFa6Srq2I9cubliMly_MGVPJc1KNQA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/admin/curso",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"curso"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trocar status curso",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3NzQ0OTUzLCJpYXQiOjE2Njc3NDQ2NTMsImp0aSI6IjM0OWFlNTUxMDM2MDQ1YzRhYWQ3MTkwZGViODhjNDc3IiwidXNlcl9pZCI6NCwiY3BmIjoiYWRtaW4ifQ.UV5X47vE0kgGhiAfIm2DMyOwW6dgTkxT4bhZDA2gFmE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"recusado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/admin/curso/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"curso",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Certificado",
+			"item": [
+				{
+					"name": "Gerar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3NzU5MDY1LCJpYXQiOjE2Njc3NTg3NjUsImp0aSI6IjUwYzFmYjVkOTdlNjQ5ZGQ4Zjk2MWE4YmY2MzE2Y2RlIiwidXNlcl9pZCI6MiwiY3BmIjoiNzcxODU3MzcwMjgifQ.09TZxWCibpAyWiGuHGOB7xWBfB717Bxc9wEI0z34jTA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/certificado/gerar/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"certificado",
+								"gerar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Baixar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3NzU5MDY1LCJpYXQiOjE2Njc3NTg3NjUsImp0aSI6IjUwYzFmYjVkOTdlNjQ5ZGQ4Zjk2MWE4YmY2MzE2Y2RlIiwidXNlcl9pZCI6MiwiY3BmIjoiNzcxODU3MzcwMjgifQ.09TZxWCibpAyWiGuHGOB7xWBfB717Bxc9wEI0z34jTA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/certificado/baixar/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"certificado",
+								"baixar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY3NzU5MjI0LCJpYXQiOjE2Njc3NTg5MjQsImp0aSI6ImQ1ODc0OWRkNjJkMDRiZGNhYzkzNWI5YmI3Y2EwN2YyIiwidXNlcl9pZCI6MiwiY3BmIjoiNzcxODU3MzcwMjgifQ.Vo-_sAEKm7iby44BMYvuEPoV719HU8nqm4tzzUed8OQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/certificado/validar/En3krMoMK35FptEnwV0-nhxtKqLoDAQ4msKrB6jeYCk",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"certificado",
+								"validar",
+								"En3krMoMK35FptEnwV0-nhxtKqLoDAQ4msKrB6jeYCk"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
