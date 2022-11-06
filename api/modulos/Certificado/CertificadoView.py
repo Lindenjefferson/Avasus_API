@@ -3,7 +3,6 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.views import APIView
 from rest_framework import permissions
 from django.http.request import HttpRequest
-from rest_framework.parsers import JSONParser
 import api.modulos.Certificado.CertificadoService as certificadoService
 
 
