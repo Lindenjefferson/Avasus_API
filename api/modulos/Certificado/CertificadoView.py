@@ -9,7 +9,7 @@ import api.modulos.Certificado.CertificadoService as certificadoService
 class GerarCertificadoView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    csrf_exempt
+    @csrf_exempt
     def get(self, request: HttpRequest, curso_id: int):
         return certificadoService.gerar(curso_id, request.user.username)
 
@@ -17,7 +17,7 @@ class GerarCertificadoView(APIView):
 class BaixarCertificadoView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    csrf_exempt
+    @csrf_exempt
     def get(self, request: HttpRequest, curso_id: int):
         return certificadoService.baixar(curso_id)
 
@@ -25,6 +25,6 @@ class BaixarCertificadoView(APIView):
 class ValidarCertificadoView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    csrf_exempt
+    @csrf_exempt
     def get(self, request: HttpRequest, token: str):
         return certificadoService.validar(token)
